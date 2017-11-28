@@ -2,11 +2,11 @@ package warmUp02;
 
 public class StringTimes {
     /**
-     Given a string and a non-negative int n, return a larger string that is n copies of the original string.
-
-     stringTimes("Hi", 2) → "HiHi"
-     stringTimes("Hi", 3) → "HiHiHi"
-     stringTimes("Hi", 1) → "Hi"
+     * Given a string and a non-negative int n, return a larger string that is n copies of the original string.
+     * <p>
+     * stringTimes("Hi", 2) → "HiHi"
+     * stringTimes("Hi", 3) → "HiHiHi"
+     * stringTimes("Hi", 1) → "Hi"
      */
 
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class StringTimes {
     public static String stringTimes(String str, int n) {
         String part = "";
 
-        while(n != 0 ){
+        while (n != 0) {
             part += str;
             n--;
         }
