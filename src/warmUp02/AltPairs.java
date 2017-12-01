@@ -10,7 +10,7 @@ public class AltPairs {
      */
 
     public static void main(String[] args) {
-        System.out.println(altPairs("kitten"));
+        System.out.println(altPairs("CodingHorror"));
     }
 
     public static String altPairs(String str) {
