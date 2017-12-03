@@ -19,20 +19,17 @@ public class PlusOut {
         StringBuilder sb = new StringBuilder(str);
         int indx = word.length();
 
-        for (int i = 0; i < sb.length() - indx; i++) {
-            if (!sb.substring(i, i + indx).equals(word)) {
-                sb.replace(i, i + 1, "+");
-            } else {
-                i += indx - 1;
+        for(int i=0; i<sb.length(); i++){
+            if(i+indx <= sb.length()){
+                if(sb.substring(i,i+indx).equals(word)){
+                    i += indx-1;
+                }else{
+                    sb.replace(i,i+1,"+");
+                }
+            }else{
+                sb.replace(i,i+1,"+");
             }
         }
-
-        if (!sb.toString().endsWith(word)) {
-            for (int i = sb.lastIndexOf(word) + indx; i < sb.length(); i++) {
-                sb.replace(i, i + 1, "+");
-            }
-        }
-
         return sb.toString();
     }
 }
