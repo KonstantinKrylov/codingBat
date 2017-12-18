@@ -5,19 +5,19 @@ import java.util.List;
 
 public class Ap1 {
     /**
+     * Given an array of scores, return true if each score is equal or greater than the one before.
+     * The array will be length 2 or more.
+     * <p>
+     * scoresIncreasing([1, 3, 4]) → true
+     * scoresIncreasing([1, 3, 2]) → false
+     * scoresIncreasing([1, 1, 4]) → true
      *
-     Given an array of scores, return true if each score is equal or greater than the one before.
-     The array will be length 2 or more.
-
-     scoresIncreasing([1, 3, 4]) → true
-     scoresIncreasing([1, 3, 2]) → false
-     scoresIncreasing([1, 1, 4]) → true
      * @param scores
      * @return
      */
     public boolean scoresIncreasing(int[] scores) {
-        for(int i=0;i<scores.length-1;i++){
-            if(!(scores[i]<=scores[i+1])) return false;
+        for (int i = 0; i < scores.length - 1; i++) {
+            if (!(scores[i] <= scores[i + 1])) return false;
         }
         return true;
     }
@@ -31,8 +31,8 @@ public class Ap1 {
          scores100([1, 100, 99, 100]) → false
          scores100([100, 1, 100, 100]) → true
          */
-        for(int i=0;i<scores.length-1;i++){
-            if(scores[i]==100 && scores[i+1]==100) return true;
+        for (int i = 0; i < scores.length - 1; i++) {
+            if (scores[i] == 100 && scores[i + 1] == 100) return true;
         }
         return false;
     }
@@ -46,11 +46,11 @@ public class Ap1 {
          scoresClump([3, 4, 6]) → false
          scoresClump([1, 3, 5, 5]) → true
          */
-        int count=0;
-        for(int i=0;i<scores.length-2;i++){
-            if(scores[i+1]-scores[i]<=2 &&
-                    scores[i+2]-scores[i+1]<=2 &&
-                    scores[i+2]-scores[i]<=2)return true;
+        int count = 0;
+        for (int i = 0; i < scores.length - 2; i++) {
+            if (scores[i + 1] - scores[i] <= 2 &&
+                    scores[i + 2] - scores[i + 1] <= 2 &&
+                    scores[i + 2] - scores[i] <= 2) return true;
         }
         return false;
     }
@@ -69,16 +69,16 @@ public class Ap1 {
          scoresAverage([4, 4, 4, 2, 2, 2]) → 4
          scoresAverage([3, 4, 5, 1, 2, 3]) → 4
          */
-        return Math.max(average(scores, 0, scores.length/2-1),
-                average(scores, scores.length/2, scores.length-1));
+        return Math.max(average(scores, 0, scores.length / 2 - 1),
+                average(scores, scores.length / 2, scores.length - 1));
     }
 
-    public int average(int[] scores, int start, int end){
-        int sum=0;
-        for(int i=start; i<=end; i++){
-            sum+=scores[i];
+    public int average(int[] scores, int start, int end) {
+        int sum = 0;
+        for (int i = start; i <= end; i++) {
+            sum += scores[i];
         }
-        return sum/(end-start+1);
+        return sum / (end - start + 1);
     }
 
     public int wordsCount(String[] words, int len) {
@@ -90,9 +90,9 @@ public class Ap1 {
          wordsCount(["a", "bb", "b", "ccc"], 3) → 1
          wordsCount(["a", "bb", "b", "ccc"], 4) → 0
          */
-        int count=0;
-        for(String w:words){
-            if(w.length()==len) count++;
+        int count = 0;
+        for (String w : words) {
+            if (w.length() == len) count++;
         }
         return count;
     }
@@ -106,8 +106,8 @@ public class Ap1 {
          wordsFront(["a", "b", "c", "d"], 3) → ["a", "b", "c"]
          */
         String[] arr = new String[n];
-        for(int i=0; i< arr.length; i++){
-            arr[i]=words[i];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = words[i];
         }
         return arr;
     }
@@ -123,8 +123,8 @@ public class Ap1 {
          wordsWithoutList(["a", "bb", "b", "ccc"], 4) → ["a", "bb", "b", "ccc"]
          */
         List<String> res = new ArrayList<>();
-        for(String w:words){
-            if(w.length()!=len) res.add(w);
+        for (String w : words) {
+            if (w.length() != len) res.add(w);
         }
         return res;
     }
@@ -154,9 +154,9 @@ public class Ap1 {
          dividesSelf(120) → false
          */
         String nstr = String.valueOf(n);
-        if(nstr.indexOf("0")!=-1) return false;
-        for(int i=0; i<nstr.length(); i++){
-            if(n%Integer.parseInt(nstr.substring(i,i+1))!=0) return false;
+        if (nstr.indexOf("0") != -1) return false;
+        for (int i = 0; i < nstr.length(); i++) {
+            if (n % Integer.parseInt(nstr.substring(i, i + 1)) != 0) return false;
         }
         return true;
     }
@@ -171,9 +171,9 @@ public class Ap1 {
          copyEvens([6, 1, 2, 4, 5, 8], 3) → [6, 2, 4]
          */
         int[] arr = new int[count];
-        for(int i=0,j=0; i<nums.length && j<count; i++){
-            if(nums[i]%2==0){
-                arr[j]=nums[i];
+        for (int i = 0, j = 0; i < nums.length && j < count; i++) {
+            if (nums[i] % 2 == 0) {
+                arr[j] = nums[i];
                 j++;
             }
         }
@@ -192,18 +192,18 @@ public class Ap1 {
          copyEndy([12, 1, 1, 13, 0, 20], 2) → [1, 1]
          */
         int[] arr = new int[count];
-        for(int i=0,j=0; i<nums.length && j<count; i++){
-            if(isEndy(nums[i])){
-                arr[j]=nums[i];
+        for (int i = 0, j = 0; i < nums.length && j < count; i++) {
+            if (isEndy(nums[i])) {
+                arr[j] = nums[i];
                 j++;
             }
         }
         return arr;
     }
 
-    boolean isEndy(int n){
-        if(0<=n && n<=10 ||
-                90<=n && n<=100) return true;
+    boolean isEndy(int n) {
+        if (0 <= n && n <= 10 ||
+                90 <= n && n <= 100) return true;
         return false;
     }
 
@@ -219,9 +219,9 @@ public class Ap1 {
          matchUp(["aa", "bb", "cc"], ["aaa", "b", "bb"]) → 2
          matchUp(["aa", "bb", "cc"], ["", "", "ccc"]) → 1
          */
-        int count=0;
-        for(int i=0; i<a.length; i++){
-            if(a[i].length()!=0 && b[i].length()!=0 && a[i].charAt(0)==b[i].charAt(0)) count++;
+        int count = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i].length() != 0 && b[i].length() != 0 && a[i].charAt(0) == b[i].charAt(0)) count++;
         }
         return count;
     }
@@ -237,13 +237,13 @@ public class Ap1 {
          scoreUp(["a", "a", "b", "b"], ["a", "a", "b", "c"]) → 11
          scoreUp(["a", "a", "b", "b"], ["a", "a", "b", "b"]) → 16
          */
-        int count=0;
-        for(int i=0; i<key.length; i++){
-            if(answers[i].equals("?")) continue;
-            if(key[i].equals(answers[i])){
-                count+=4;
-            }else{
-                count-=1;
+        int count = 0;
+        for (int i = 0; i < key.length; i++) {
+            if (answers[i].equals("?")) continue;
+            if (key[i].equals(answers[i])) {
+                count += 4;
+            } else {
+                count -= 1;
             }
         }
         return count;
@@ -260,13 +260,13 @@ public class Ap1 {
          wordsWithout(["a", "b", "c", "a"], "c") → ["a", "b", "a"]
          */
         int arrL = 0;
-        for(String word:words){
-            if(!word.equals(target))arrL++;
+        for (String word : words) {
+            if (!word.equals(target)) arrL++;
         }
         String[] res = new String[arrL];
-        for(int i=0,j=0; i<words.length; i++){
-            if(words[i].equals(target))continue;
-            res[j]=words[i];
+        for (int i = 0, j = 0; i < words.length; i++) {
+            if (words[i].equals(target)) continue;
+            res[j] = words[i];
             j++;
         }
         return res;
@@ -283,13 +283,13 @@ public class Ap1 {
          scoresSpecial([20, 10, 4], [2, 20, 10]) → 40
          scoresSpecial([12, 11, 4], [2, 20, 31]) → 20
          */
-        return findLargestFor10(a)+findLargestFor10(b);
+        return findLargestFor10(a) + findLargestFor10(b);
     }
 
-    int findLargestFor10(int[] arr){
-        int max=0;
-        for(int i:arr){
-            if(i%10==0) max=Math.max(i,max);
+    int findLargestFor10(int[] arr) {
+        int max = 0;
+        for (int i : arr) {
+            if (i % 10 == 0) max = Math.max(i, max);
         }
         return max;
     }
@@ -306,9 +306,9 @@ public class Ap1 {
          sumHeights([5, 3, 6, 7, 2], 0, 1) → 2
          sumHeights([5, 3, 6, 7, 2], 0, 4) → 11
          */
-        int count=0;
-        for(int i=start; i<end; i++){
-            count += Math.abs(heights[i]-heights[i+1]);
+        int count = 0;
+        for (int i = start; i < end; i++) {
+            count += Math.abs(heights[i] - heights[i + 1]);
         }
         return count;
     }
@@ -326,11 +326,11 @@ public class Ap1 {
          sumHeights2([5, 3, 6, 7, 2], 0, 1) → 2
          sumHeights2([5, 3, 6, 7, 2], 0, 4) → 15
          */
-        int count=0;
-        int toAdd=0;
-        for(int i=start; i<end; i++){
-            toAdd=Math.abs(heights[i]-heights[i+1]);
-            if(heights[i+1]>heights[i]) toAdd*=2;
+        int count = 0;
+        int toAdd = 0;
+        for (int i = start; i < end; i++) {
+            toAdd = Math.abs(heights[i] - heights[i + 1]);
+            if (heights[i + 1] > heights[i]) toAdd *= 2;
             count += toAdd;
         }
         return count;
@@ -348,11 +348,12 @@ public class Ap1 {
          bigHeights([5, 3, 6, 7, 2], 0, 1) → 0
          bigHeights([5, 3, 6, 7, 2], 0, 4) → 1
          */
-        int count=0;
-        for(int i=start; i<end; i++){
-            if(Math.abs(heights[i]-heights[i+1])>=5){
+        int count = 0;
+        for (int i = start; i < end; i++) {
+            if (Math.abs(heights[i] - heights[i + 1]) >= 5) {
                 count++;
-            };
+            }
+            ;
         }
         return count;
     }
@@ -371,11 +372,11 @@ public class Ap1 {
          userCompare("bb", 1, "aa", 2) → 1
          userCompare("bb", 1, "bb", 1) → 0
          */
-        int nameComp=aName.compareTo(bName);
-        int idComp=aId-bId;
+        int nameComp = aName.compareTo(bName);
+        int idComp = aId - bId;
 
-        if(nameComp==0 && idComp==0) return 0;
-        if((nameComp<0 || nameComp==0) && idComp<0) return -1;
+        if (nameComp == 0 && idComp == 0) return 0;
+        if ((nameComp < 0 || nameComp == 0) && idComp < 0) return -1;
         return 1;
 
     }
@@ -389,31 +390,31 @@ public class Ap1 {
          mergeTwo(["a", "c", "z"], ["c", "f", "z"], 3) → ["a", "c", "f"]
          mergeTwo(["f", "g", "z"], ["c", "f", "g"], 3) → ["c", "f", "g"]
          */
-        String[] res=new String[n];
-        String q="";
-        String w="";
+        String[] res = new String[n];
+        String q = "";
+        String w = "";
 
-        for(int i=0, j=0,k=0; i<a.length || j<b.length; i++,j++){
-            if(k==n) break;
+        for (int i = 0, j = 0, k = 0; i < a.length || j < b.length; i++, j++) {
+            if (k == n) break;
 
-            if(i<a.length) q = a[i];
-            if(i<b.length) w = b[j];
+            if (i < a.length) q = a[i];
+            if (i < b.length) w = b[j];
 
-            if(q.compareTo(w)==0){
-                res[k]=a[i];
+            if (q.compareTo(w) == 0) {
+                res[k] = a[i];
                 k++;
                 continue;
             }
 
-            if(q.compareTo(w)<0){
-                res[k]=a[i];
+            if (q.compareTo(w) < 0) {
+                res[k] = a[i];
                 k++;
                 j--;
                 continue;
             }
 
-            if(q.compareTo(w)>0){
-                res[k]=b[j];
+            if (q.compareTo(w) > 0) {
+                res[k] = b[j];
                 k++;
                 i--;
                 continue;
@@ -432,36 +433,27 @@ public class Ap1 {
          commonTwo(["a", "c", "x"], ["a", "b", "c", "x", "z"]) → 3
          commonTwo(["a", "b", "c"], ["a", "b", "c"]) → 3
          */
-        int count=0;
-        String oldA="";
-        String oldB="";
+        int count = 0;
+        String oldA = "";
+        String oldB = "";
 
         outer:
-        for(int i=0; i<a.length; i++){
+        for (int i = 0; i < a.length; i++) {
 
-            if(a[i].equals(oldA) && count!=0) continue outer;
-            oldA=a[i];
+            if (a[i].equals(oldA) && count != 0) continue outer;
+            oldA = a[i];
 
             inner:
-            for(int j=0; j<b.length; j++){
+            for (int j = 0; j < b.length; j++) {
 
-                if(b[j].equals(oldB) && count!=0) continue inner;
-                oldB=b[j];
-                if(a[i].compareTo(b[j])==0)count++;
+                if (b[j].equals(oldB) && count != 0) continue inner;
+                oldB = b[j];
+                if (a[i].compareTo(b[j]) == 0) count++;
 
             }
         }
         return count;
     }
-
-
-
-
-
-
-
-
-
 
 
 }
