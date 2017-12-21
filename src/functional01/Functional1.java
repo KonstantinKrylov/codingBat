@@ -74,7 +74,7 @@ public class Functional1 {
          math1([6, 8, 6, 8, 1]) → [70, 90, 70, 90, 20]
          math1([10]) → [110]
          */
-        nums.replaceAll(n -> (n + 1)*10);
+        nums.replaceAll(n -> (n + 1) * 10);
         return nums;
     }
 
@@ -112,10 +112,9 @@ public class Functional1 {
          noX(["xxax", "xbxbx", "xxcx"]) → ["a", "bb", "c"]
          noX(["x"]) → [""]
          */
-        strings.replaceAll(n -> n.replaceAll("x",""));
+        strings.replaceAll(n -> n.replaceAll("x", ""));
         return strings;
     }
-
 
 
 }
